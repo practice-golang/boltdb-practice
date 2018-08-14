@@ -1,0 +1,7 @@
+.DS_Store
+pkg
+bin
+boltdb-practice.exe
+vendor
+Gopkg.lock
+Gopkg.toml
