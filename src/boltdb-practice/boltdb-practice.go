@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/coreos/bbolt"
+	bolt "github.com/coreos/bbolt"
 )
 
 // Book : Book 정보
@@ -85,9 +85,11 @@ func getData(id string, bucket string, db *bolt.DB) ([]Book, error) {
 		} else {
 			for k, v := c.First(); k != nil; k, v = c.Next() {
 				data, _ := gobDecode(v)
+				books = append(books, *data)
+
+				// fmt.Println(string(v))
 				// fmt.Printf("key, value: %s , %s\n", k, *data)
 				// fmt.Printf("key, value: %s , %s, %s\n", k, data.Title, data.Author)
-				books = append(books, *data)
 			}
 		}
 
